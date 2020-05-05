@@ -1,3 +1,5 @@
+//starter files from Treehouse
+
 const form = document.getElementById('registrar');
 const input = form.querySelector('input');
 
@@ -20,22 +22,22 @@ filterCheckBox.addEventListener('change', (e) => {
     for (let i = 0; i < lis.length; i += 1) {
       let li = lis[i];
       if (li.className === 'responded') {
-        li.style.display = '';  
+        li.style.display = '';
       } else {
-        li.style.display = 'none';                        
+        li.style.display = 'none';
       }
     }
   } else {
     for (let i = 0; i < lis.length; i += 1) {
       let li = lis[i];
       li.style.display = '';
-    }                                 
+    }
   }
 });
 
 function createLI(text) {
   const li = document.createElement('li');
-  const span = document.createElement('span');  
+  const span = document.createElement('span');
   span.textContent = text;
   li.appendChild(span);
   const label = document.createElement('label');
@@ -43,7 +45,7 @@ function createLI(text) {
   const checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   label.appendChild(checkbox);
-  li.appendChild(label);  
+  li.appendChild(label);
   const editButton = document.createElement('button');
   editButton.textContent = 'edit';
   li.appendChild(editButton);
@@ -60,19 +62,19 @@ form.addEventListener('submit', (e) => {
   const li = createLI(text);
   ul.appendChild(li);
 });
-  
+
 ul.addEventListener('change', (e) => {
   const checkbox = event.target;
   const checked = checkbox.checked;
   const listItem = checkbox.parentNode.parentNode;
-  
+
   if (checked) {
     listItem.className = 'responded';
   } else {
     listItem.className = '';
   }
 });
-  
+
 ul.addEventListener('click', (e) => {
   if (e.target.tagName === 'BUTTON') {
     const button = e.target;
@@ -80,7 +82,7 @@ ul.addEventListener('click', (e) => {
     const ul = li.parentNode;
     if (button.textContent === 'remove') {
       ul.removeChild(li);
-    } else if (button.textContent === 'edit') { 
+    } else if (button.textContent === 'edit') {
       const span = li.firstElementChild;
       const input = document.createElement('input');
       input.type = 'text';
@@ -88,7 +90,7 @@ ul.addEventListener('click', (e) => {
       li.insertBefore(input, span);
       li.removeChild(span);
       button.textContent = 'save';
-    } else if (button.textContent === 'save') { 
+    } else if (button.textContent === 'save') {
       const input = li.firstElementChild;
       const span = document.createElement('span');
       span.textContent = input.value;
@@ -97,14 +99,4 @@ ul.addEventListener('click', (e) => {
       button.textContent = 'edit';
     }
   }
-});  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+});
