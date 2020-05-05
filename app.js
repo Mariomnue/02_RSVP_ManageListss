@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {//
 	});
 
 	function createLI(text){
-		function createElement(elementName, prop, value){
+    function createElement(elementName, prop, value){
 			const element = document.createElement(elementName);// place text from input into a span
 			element[prop] = value;
 			return element;
 		}
 
 		function appendToLI(elementName, prop, value){
-			const element = createElement(elementName, prop, value);
+      const element = createElement(elementName, prop, value);
 			li.appendChild(element);
 			return element;
 		}
@@ -58,9 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {//
 		form.addEventListener('submit', (e) => {
 			e.preventDefault();
 			const text = input.value;
-			input.value = '';
-			const li = createLI(text);
-			ul.appendChild(li);
+      if(text === ''){
+        alert("Please add a name to continue.");//no Blanks please
+        //return '';
+      }else{
+        input.value = '';
+  			const li = createLI(text);
+  			ul.appendChild(li);
+      }
 		});
 
 		ul.addEventListener('change', (e) => {
@@ -80,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {//
 				const li = button.parentNode;
 				const ul = li.parentNode;
 				const action = button.textContent;
-				const nameAction = {
+				const nameAction = {// nameAction function
 					remove: () => {
 						ul.removeChild(li);
 					},
